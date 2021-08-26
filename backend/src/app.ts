@@ -5,7 +5,6 @@ import cors from 'cors';
 import path from 'path';
 import mongoose from 'mongoose';
 
-import { NotFoundError } from './errors';
 // import { errorHandler } from './middlewares';
 import mainRoute from './routes/_main.route';
 import swaggerJsDoc from 'swagger-jsdoc';
@@ -62,10 +61,5 @@ app.use(
 );
 
 app.use('/api', mainRoute);
-
-app.all('*', (req: Request, res: Response) => {
-  throw new NotFoundError();
-});
-// app.use(errorHandler);
 
 export { app };
