@@ -7,7 +7,7 @@ import mongoose from 'mongoose';
 
 import { NotFoundError } from './errors';
 // import { errorHandler } from './middlewares';
-// import mainRoute from './routes/_main.route';
+import mainRoute from './routes/_main.route';
 import swaggerJsDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 
@@ -61,7 +61,7 @@ app.use(
   swaggerUi.setup(swaggerDocs)
 );
 
-// app.use('/api', mainRoute);
+app.use('/api', mainRoute);
 
 app.all('*', (req: Request, res: Response) => {
   throw new NotFoundError();

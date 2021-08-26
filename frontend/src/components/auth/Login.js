@@ -14,6 +14,7 @@ const Login = (props) => {
     // En caso de que el password o usuario no exista
     useEffect(() => {
         if(autenticado) {
+            console.log("Si");
             //props.history.push('/proyectos');
         }
 
@@ -56,11 +57,9 @@ const Login = (props) => {
 
     return ( 
         <div className="form-usuario">
-            { alerta ? ( <div className={`alerta ${alerta.categoria}`}> {alerta.msg} </div> )  : null }
-
             <div className="contenedor-form sombra-dark">
                 <h1>Iniciar Sesión</h1>
-
+                { alerta ? ( <div className={`alerta ${alerta.categoria}`}> {alerta.msg} </div> )  : null }
                 <form
                     onSubmit={onSubmit}
                 >
