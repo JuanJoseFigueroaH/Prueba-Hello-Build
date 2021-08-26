@@ -67,9 +67,9 @@ const AuthState = props => {
             });
 
         } catch (error) {
-            dispatch({
+            /*dispatch({
                 type: LOGIN_ERROR
-            })
+            })*/
         }
     }
 

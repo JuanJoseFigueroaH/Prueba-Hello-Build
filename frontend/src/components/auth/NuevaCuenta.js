@@ -15,7 +15,8 @@ const NuevaCuenta = (props) => {
     // En caso de que el usuario se haya autenticado o registrado o sea un registro duplicado
     useEffect(() => {
         if(autenticado) {
-            props.history.push('/proyectos');
+            console.log("Si");
+            //props.history.push('/proyectos');
         }
 
         if(mensaje) {
@@ -79,10 +80,9 @@ const NuevaCuenta = (props) => {
 
     return ( 
         <div className="form-usuario">
-            { alerta ? ( <div className={`alerta ${alerta.categoria}`}> {alerta.msg} </div> )  : null }
             <div className="contenedor-form sombra-dark">
                 <h1>Obtener una cuenta</h1>
-
+                { alerta ? ( <div className={`alerta ${alerta.categoria}`}> {alerta.msg} </div> )  : null }
                 <form
                     onSubmit={onSubmit}
                 >

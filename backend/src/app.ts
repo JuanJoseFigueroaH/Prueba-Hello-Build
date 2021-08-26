@@ -1,4 +1,4 @@
-import express, { Response, Request } from 'express';
+import express from 'express';
 import 'express-async-errors';
 import morgan from 'morgan';
 import cors from 'cors';
