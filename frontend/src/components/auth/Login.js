@@ -15,7 +15,7 @@ const Login = (props) => {
     useEffect(() => {
         if(autenticado) {
             console.log("Si");
-            //props.history.push('/proyectos');
+            props.history.push('/dashboard');
         }
 
         if(mensaje) {

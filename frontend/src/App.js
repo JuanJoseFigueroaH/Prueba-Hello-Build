@@ -5,8 +5,12 @@ import NuevaCuenta from './components/auth/NuevaCuenta';
 import AlertaState from './context/alertas/alertaState';
 import AuthState from './context/autenticacion/authState';
 import Dashboard from './components/dashboard/dashboard';
-
 import RutaPrivada from './components/rutas/RutaPrivada';
+import tokenAuth from './config/token';
+const token = localStorage.getItem('token');
+if(token) {
+  tokenAuth(token);
+}
 
 function App() {
   return (

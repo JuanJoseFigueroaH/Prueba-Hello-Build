@@ -24,8 +24,6 @@ class AuthController extends BaseController {
         return res.status(400).json({ msg: 'El usuario no existe' });
       }
 
-      console.log('Hpta');
-
       // Revisar el password
       const passCorrecto = await bcryptjs.compare(password, usuario.password);
       if (!passCorrecto) {
@@ -53,18 +51,19 @@ class AuthController extends BaseController {
     }
   };
 
-/* public usuarioAutenticado = async (
+  public usuarioAutenticado = async (
     req: Request,
     res: Response,
     next: NextFunction
   ) => {
     try {
-      const usuario = await this.db.usuarioModel.findById(req.id).select('-password');
+      console.log(req);
+      const usuario = await this.db.usuarioModel.findById(req.body.usuario.id).select('-password');
       res.json({ usuario });
     } catch (err) {
       res.status(500).json({ msg: 'Hubo un error' });
     }
-  }; */
+  };
 }
 
 export default AuthController;
