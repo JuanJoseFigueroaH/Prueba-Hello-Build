@@ -175,6 +175,14 @@ aside  {
   display: flex;
   justify-content: center;
 }
+.div-perfil{
+  text-align: center;
+}
+.avatar{
+  width: 20%;
+  justify-content: center;
+  border-radius: 5rem;
+}
 .formulario form {
   max-width: 600px;
   margin: 0 auto;

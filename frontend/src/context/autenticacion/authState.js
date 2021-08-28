@@ -82,7 +82,6 @@ const AuthState = props => {
                 cerrarSesion,
             }}
         >{props.children}
-
         </AuthContext.Provider>
     )
 }

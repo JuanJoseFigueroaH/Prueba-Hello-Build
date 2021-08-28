@@ -17,20 +17,18 @@ const Sidebar = (props) => {
             <h1>Prueba<span> Hello Build</span></h1>
 
             <div className="proyectos">
-                <button 
-                    className="btn btn-blank nav-text cerrar-sesion"
-                    onClick={() => cerrarSesion() }
-                >Dashboard</button>
-                <Link to={'/perfil'} className="nav-text cerrar-sesion">
+                <Link to={'/dashboard'} className="btn btn-blank nav-text cerrar-sesion">
+                    Dashboard
+                </Link>
+                <Link to={'/perfil'} className="btn btn-blank nav-text cerrar-sesion">
                     Perfil
                 </Link>
-                <Link to={'/repositorios'} className="nav-text cerrar-sesion">
+                <Link to={'/repositorios'} className="btn btn-blank nav-text cerrar-sesion">
                     Repositorios
                 </Link>
-                <button 
-                    className="btn btn-blank nav-text cerrar-sesion"
-                    onClick={() => cerrarSesion() }
-                >Cerrar Sesión</button>
+                <Link onClick={() => cerrarSesion() } className="btn btn-blank nav-text cerrar-sesion">
+                    Cerrar Sesión
+                </Link>
             </div>
         </aside>
      );

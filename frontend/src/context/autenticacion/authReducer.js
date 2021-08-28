@@ -6,7 +6,6 @@ import {
     LOGIN_EXITOSO,
     LOGIN_ERROR,
     CERRAR_SESION,
-    PERFIL
 } from '../../types';
 
 export default (state, action) => {
