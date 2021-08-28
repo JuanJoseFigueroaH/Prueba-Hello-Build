@@ -5,7 +5,8 @@ import {
     OBTENER_USUARIO,
     LOGIN_EXITOSO,
     LOGIN_ERROR,
-    CERRAR_SESION
+    CERRAR_SESION,
+    PERFIL
 } from '../../types';
 
 export default (state, action) => {

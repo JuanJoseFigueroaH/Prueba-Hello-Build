@@ -1,10 +1,11 @@
 import React, {useContext, useEffect} from 'react';
 import AuthContext from '../../context/autenticacion/authContext';
+import { Link } from 'react-router-dom';
 
-const Sidebar = () => {
+const Sidebar = (props) => {
     // Extraer la información de autenticación
     const authContext = useContext(AuthContext);
-    const { usuario, usuarioAutenticado, cerrarSesion  } = authContext;
+    const { usuarioAutenticado, cerrarSesion  } = authContext;
 
     useEffect(() => {
         usuarioAutenticado();
@@ -18,13 +19,14 @@ const Sidebar = () => {
             <div className="proyectos">
                 <button 
                     className="btn btn-blank nav-text cerrar-sesion"
+                    onClick={() => cerrarSesion() }
                 >Dashboard</button>
-                <button 
-                    className="btn btn-blank nav-text cerrar-sesion"
-                >Perfil</button>
-                <button 
-                    className="btn btn-blank nav-text cerrar-sesion"
-                >Repositorios</button>
+                <Link to={'/perfil'} className="nav-text cerrar-sesion">
+                    Perfil
+                </Link>
+                <Link to={'/repositorios'} className="nav-text cerrar-sesion">
+                    Repositorios
+                </Link>
                 <button 
                     className="btn btn-blank nav-text cerrar-sesion"
                     onClick={() => cerrarSesion() }

@@ -164,6 +164,17 @@ aside  {
   padding: 1.5rem;
   text-align: center;
 }
+.dashboard-text-title{
+  padding-top: 4rem;
+  text-align: center;
+}
+.dashboard-text{
+  text-align: center;
+}
+.dashboard-bottom{
+  display: flex;
+  justify-content: center;
+}
 .formulario form {
   max-width: 600px;
   margin: 0 auto;

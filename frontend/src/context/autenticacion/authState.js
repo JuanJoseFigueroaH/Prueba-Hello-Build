@@ -1,16 +1,13 @@
 import React, { useReducer } from 'react';
 import AuthContext from './authContext';
 import AuthReducer from './authReducer';
-
 import clienteAxios from '../../config/axios';
 import tokenAuth from '../../config/token';
 
 import { 
     REGISTRO_EXITOSO,
-    REGISTRO_ERROR,
     OBTENER_USUARIO,
     LOGIN_EXITOSO,
-    LOGIN_ERROR,
     CERRAR_SESION
 } from '../../types';
 
@@ -26,30 +23,15 @@ const AuthState = props => {
     const [ state, dispatch ] = useReducer(AuthReducer, initialState);
 
     const registrarUsuario = async datos => {
-        try {
+        const respuesta = await clienteAxios.post('/api/usuarios', datos);
 
-            const respuesta = await clienteAxios.post('/api/usuarios', datos);
-            console.log(respuesta.data);
+        dispatch({
+            type: REGISTRO_EXITOSO,
+            payload: respuesta.data
+        });
 
-            dispatch({
-                type: REGISTRO_EXITOSO,
-                payload: respuesta.data
-            });
-
-            // Obtener el usuario
-            usuarioAutenticado();
-        } catch (error) {
-            // console.log(error.response.data.msg);
-            const alerta = {
-                msg: error.response.data.msg,
-                categoria: 'alerta-error'
-            }
-
-            dispatch({
-                type: REGISTRO_ERROR,
-                payload: alerta
-            })
-        }
+        // Obtener el usuario
+        usuarioAutenticado();
     }
 
     // Retorna el usuario autenticado
@@ -59,44 +41,24 @@ const AuthState = props => {
             tokenAuth(token);
         }
 
-        try {
-            const respuesta = await clienteAxios.get('/api/auth');
-            dispatch({
-                type: OBTENER_USUARIO,
-                payload: respuesta.data.usuario
-            });
-
-        } catch (error) {
-            /*dispatch({
-                type: LOGIN_ERROR
-            })*/
-        }
+        const respuesta = await clienteAxios.get('/api/auth');
+        dispatch({
+            type: OBTENER_USUARIO,
+            payload: respuesta.data.usuario
+        });
     }
 
     // Cuando el usuario inicia sesión
     const iniciarSesion = async datos => {
-        try {
-            const respuesta = await clienteAxios.post('/api/auth', datos);
-            
-            dispatch({
-                type: LOGIN_EXITOSO,
-                payload: respuesta.data
-            });
+        const respuesta = await clienteAxios.post('/api/auth', datos);
+        
+        dispatch({
+            type: LOGIN_EXITOSO,
+            payload: respuesta.data
+        });
 
-            // Obtener el usuario
-            usuarioAutenticado();
-        } catch (error) {
-            /*console.log(error.response.data);
-            const alerta = {
-                msg: error.response.data.msg,
-                categoria: 'alerta-error'
-            }
-
-            dispatch({
-                type: LOGIN_ERROR,
-                payload: alerta
-            })*/
-        }
+        // Obtener el usuario
+        usuarioAutenticado();
     }
 
     // Cierra la sesión del usuario
@@ -117,7 +79,7 @@ const AuthState = props => {
                 registrarUsuario,
                 iniciarSesion,
                 usuarioAutenticado,
-                cerrarSesion
+                cerrarSesion,
             }}
         >{props.children}
 
