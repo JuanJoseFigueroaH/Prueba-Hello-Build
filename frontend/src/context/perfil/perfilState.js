@@ -19,10 +19,9 @@ const PerfilState = props => {
     // Obtener los proyectos
     const obtenerPerfil = async () => {
         const resultado = await axios.get('https:\\api.github.com/users/JuanJoseFigueroaH');
-        console.log(resultado);
         dispatch({
             type: OBTENER_PERFIL,
-            payload: resultado
+            payload: resultado.data
         })
     }
 

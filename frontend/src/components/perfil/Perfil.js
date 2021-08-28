@@ -9,6 +9,7 @@ const Perfil = () => {
     const { perfil_dashboard, obtenerPerfil } = perfilContext;
 
     useEffect(() => {
+        console.log("Si");
         obtenerPerfil();
         // eslint-disable-next-line
     }, [])
@@ -23,11 +24,11 @@ const Perfil = () => {
                         Perfil
                     </h1>
                     <div className="div-perfil">
-                        <img className="avatar" src={perfil_dashboard.data.avatar_url} />
-                        <p className="perfil-text">Nombre: {perfil_dashboard.data.name}</p>
-                        <p className="perfil-text">Url: {perfil_dashboard.data.url}</p>
-                        <p className="perfil-text">Biografia: {perfil_dashboard.data.bio}</p>
-                        <p className="perfil-text">Localización: {perfil_dashboard.data.location}</p>
+                        <img className="avatar" src={perfil_dashboard.avatar_url} />
+                        <p className="perfil-text">Nombre: {perfil_dashboard.name}</p>
+                        <p className="perfil-text">Url: {perfil_dashboard.url}</p>
+                        <p className="perfil-text">Biografia: {perfil_dashboard.bio}</p>
+                        <p className="perfil-text">Localización: {perfil_dashboard.location}</p>
                     </div>
                 </main>
             </div>
